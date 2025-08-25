@@ -128,7 +128,7 @@ const Home = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <div className="flex items-center gap-2 text-foreground">
                 <Phone className="w-5 h-5 text-primary" />
-                <span>+264 81 123 4567</span>
+                <span>+264 818024469</span>
               </div>
               <div className="flex items-center gap-2 text-foreground">
                 <Mail className="w-5 h-5 text-primary" />
@@ -175,7 +175,7 @@ const Home = () => {
               <div className="space-y-2 text-background/70">
                 <div className="flex items-center gap-2">
                   <Phone className="w-4 h-4" />
-                  <span>+264 81 123 4567</span>
+                  <span>+264 818024469</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Mail className="w-4 h-4" />

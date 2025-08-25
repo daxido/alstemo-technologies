@@ -55,13 +55,13 @@ const Contact = () => {
     {
       icon: Phone,
       title: 'Phone',
-      details: ['+264 81 123 4567', '+264 85 987 6543'],
+      details: ['+264 818024469', '+264 85 987 6543'],
       description: 'Call us during business hours'
     },
     {
       icon: MessageCircle,
       title: 'WhatsApp',
-      details: ['+264 81 123 4567'],
+      details: ['+264 818024469'],
       description: 'Available 24/7 for quick support'
     },
     {
@@ -294,17 +294,23 @@ const Contact = () => {
               <Button 
                 size="lg" 
                 className="bg-primary-gradient hover:shadow-hero"
+                asChild
               >
-                <Phone className="w-4 h-4 mr-2" />
-                Call Now: +264 81 123 4567
+                <a href="tel:+264818024469">
+                  <Phone className="w-4 h-4 mr-2" />
+                  Call Now: +264 818024469
+                </a>
               </Button>
               <Button 
                 size="lg" 
                 variant="outline" 
                 className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                asChild
               >
-                <MessageCircle className="w-4 h-4 mr-2" />
-                WhatsApp Us
+                <a href="https://wa.me/264818024469" target="_blank" rel="noopener noreferrer">
+                  <MessageCircle className="w-4 h-4 mr-2" />
+                  WhatsApp Us
+                </a>
               </Button>
             </div>
           </div>
