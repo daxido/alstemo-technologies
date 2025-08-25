@@ -61,7 +61,7 @@ const handler = async (req: Request): Promise<Response> => {
     // Send notification email to business
     const notificationEmail = await resend.emails.send({
       from: "ALSTEMO Contact <onboarding@resend.dev>",
-      to: ["veritedax3@gmail.com"],
+      to: ["daxgino@gmail.com"],
       subject: `New Service Request: ${formData.service_category}`,
       html: `
         <h2>New Service Request Received</h2>
@@ -103,7 +103,7 @@ const handler = async (req: Request): Promise<Response> => {
         
         <hr>
         <p style="font-size: 12px; color: #666;">
-        If you have any urgent questions, feel free to reach out to us directly at veritedax3@gmail.com
+        If you have any urgent questions, feel free to reach out to us directly at daxgino@gmail.com
         </p>
       `,
     });
