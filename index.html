@@ -3,18 +3,84 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>alstemo-namibia-web</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
+    <title>ALSTEMO Technologies - Affordable IT Solutions in Namibia</title>
+    <meta name="description" content="Professional IT services from passionate young entrepreneurs in Namibia. Web development, mobile apps, IT support, and more at affordable prices." />
+    <meta name="author" content="ALSTEMO Technologies" />
+    
+    <!-- Critical CSS inlining for above-the-fold content -->
+    <style>
+      :root {
+        --background: 0 0% 100%;
+        --foreground: 222.2 84% 4.9%;
+        --primary: 221.2 83.2% 53.3%;
+        --primary-foreground: 210 40% 98%;
+      }
+      body { 
+        margin: 0; 
+        font-family: system-ui, -apple-system, sans-serif; 
+        background: hsl(var(--background)); 
+        color: hsl(var(--foreground)); 
+      }
+      .loading-fallback {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-foreground)));
+      }
+    </style>
+    
+    <!-- Preload critical CSS -->
+    <link rel="preload" href="/src/index.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/src/index.css"></noscript>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="keywords" content="IT services Namibia, web development Windhoek, affordable technology solutions, youth entrepreneurs, computer repair Namibia" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://alstemo-technologies.lovable.app/" />
 
-    <meta property="og:title" content="alstemo-namibia-web" />
-    <meta property="og:description" content="Lovable Generated Project" />
+    <meta property="og:title" content="ALSTEMO Technologies - Affordable IT Solutions in Namibia" />
+    <meta property="og:description" content="Professional IT services from passionate young entrepreneurs in Namibia. Web development, mobile apps, IT support, and more at affordable prices." />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <meta property="og:url" content="https://alstemo-technologies.lovable.app/" />
+    <meta property="og:image" content="https://alstemo-technologies.lovable.app/assets/hero-banner.jpg" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <meta name="twitter:site" content="@alstemo_tech" />
+    <meta name="twitter:title" content="ALSTEMO Technologies - Affordable IT Solutions in Namibia" />
+    <meta name="twitter:description" content="Professional IT services from passionate young entrepreneurs in Namibia." />
+    <meta name="twitter:image" content="https://alstemo-technologies.lovable.app/assets/hero-banner.jpg" />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "ALSTEMO Technologies",
+      "description": "Youth-owned IT startup providing affordable technology solutions across Namibia",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Windhoek",
+        "addressRegion": "Khomas",
+        "addressCountry": "Namibia"
+      },
+      "telephone": "+264818024469",
+      "email": "info@alstemotechnologies.com",
+      "url": "https://alstemo-technologies.lovable.app",
+      "sameAs": [
+        "https://wa.me/264818024469"
+      ],
+      "serviceArea": {
+        "@type": "Country",
+        "name": "Namibia"
+      },
+      "priceRange": "$$",
+      "openingHours": [
+        "Mo-Fr 08:00-18:00",
+        "Sa 09:00-16:00"
+      ]
+    }
+    </script>
   </head>
 
   <body>
