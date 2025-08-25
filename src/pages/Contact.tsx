@@ -17,6 +17,7 @@ import {
 import Navigation from '@/components/Navigation';
 import InteractiveBackground from '@/components/InteractiveBackground';
 import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
 
 const Contact = () => {
   const { toast } = useToast();
@@ -24,8 +25,12 @@ const Contact = () => {
     name: '',
     email: '',
     phone: '',
-    service: '',
-    message: ''
+    company: '',
+    service_category: '',
+    service_description: '',
+    budget_range: '',
+    timeline: '',
+    additional_info: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -40,15 +45,49 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      toast({
-        title: "Message Sent!",
-        description: "Thank you for contacting us. We'll get back to you within 24 hours.",
+    try {
+      console.log('Submitting form with data:', formData);
+      
+      const { data, error } = await supabase.functions.invoke('send-contact-email', {
+        body: formData
       });
-      setFormData({ name: '', email: '', phone: '', service: '', message: '' });
+
+      if (error) {
+        console.error('Supabase function error:', error);
+        throw error;
+      }
+
+      console.log('Function response:', data);
+
+      if (data?.success) {
+        toast({
+          title: "Message Sent!",
+          description: data.message || "Thank you for contacting us. We'll get back to you within 24 hours.",
+        });
+        setFormData({ 
+          name: '', 
+          email: '', 
+          phone: '', 
+          company: '',
+          service_category: '', 
+          service_description: '',
+          budget_range: '',
+          timeline: '',
+          additional_info: ''
+        });
+      } else {
+        throw new Error(data?.message || 'Failed to send message');
+      }
+    } catch (error: any) {
+      console.error('Form submission error:', error);
+      toast({
+        title: "Error",
+        description: error.message || "Failed to send message. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   const contactInfo = [
@@ -161,36 +200,96 @@ const Contact = () => {
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="service">Service Needed</Label>
+                      <Label htmlFor="company">Company (Optional)</Label>
+                      <Input
+                        id="company"
+                        name="company"
+                        value={formData.company}
+                        onChange={handleInputChange}
+                        placeholder="Your company name"
+                      />
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label htmlFor="service_category">Service Category *</Label>
+                    <select
+                      id="service_category"
+                      name="service_category"
+                      value={formData.service_category}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                    >
+                      <option value="">Select a service</option>
+                      <option value="pc_diagnostics">PC Diagnostics</option>
+                      <option value="computer_repair">Computer Repair</option>
+                      <option value="it_support">IT Support</option>
+                      <option value="software_installation">Software Installation</option>
+                      <option value="networking">Networking</option>
+                      <option value="device_refurbishment">Device Refurbishment</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                  
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="budget_range">Budget Range</Label>
                       <select
-                        id="service"
-                        name="service"
-                        value={formData.service}
+                        id="budget_range"
+                        name="budget_range"
+                        value={formData.budget_range}
                         onChange={handleInputChange}
                         className="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
                       >
-                        <option value="">Select a service</option>
-                        <option value="diagnostics">PC Diagnostics</option>
-                        <option value="repair">Computer Repair</option>
-                        <option value="support">IT Support</option>
-                        <option value="software">Software Installation</option>
-                        <option value="networking">Networking</option>
-                        <option value="refurbishment">Device Refurbishment</option>
-                        <option value="other">Other</option>
+                        <option value="">Select budget range</option>
+                        <option value="under_500">Under N$500</option>
+                        <option value="500_1000">N$500 - N$1,000</option>
+                        <option value="1000_2500">N$1,000 - N$2,500</option>
+                        <option value="2500_5000">N$2,500 - N$5,000</option>
+                        <option value="over_5000">Over N$5,000</option>
+                      </select>
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="timeline">Preferred Timeline</Label>
+                      <select
+                        id="timeline"
+                        name="timeline"
+                        value={formData.timeline}
+                        onChange={handleInputChange}
+                        className="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                      >
+                        <option value="">Select timeline</option>
+                        <option value="urgent">Urgent (Within 24 hours)</option>
+                        <option value="this_week">This week</option>
+                        <option value="next_week">Next week</option>
+                        <option value="flexible">Flexible</option>
                       </select>
                     </div>
                   </div>
                   
                   <div className="space-y-2">
-                    <Label htmlFor="message">Message *</Label>
+                    <Label htmlFor="service_description">Service Description *</Label>
                     <Textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
+                      id="service_description"
+                      name="service_description"
+                      value={formData.service_description}
                       onChange={handleInputChange}
                       required
                       placeholder="Describe your IT issue or request in detail..."
-                      rows={5}
+                      rows={4}
+                    />
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label htmlFor="additional_info">Additional Information</Label>
+                    <Textarea
+                      id="additional_info"
+                      name="additional_info"
+                      value={formData.additional_info}
+                      onChange={handleInputChange}
+                      placeholder="Any additional details, special requirements, or questions..."
+                      rows={3}
                     />
                   </div>
                   
