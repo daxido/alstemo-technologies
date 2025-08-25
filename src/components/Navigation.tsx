@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
+import alstemLogo from '@/assets/alstemo-logo.png';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -21,10 +22,12 @@ const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="bg-primary-gradient p-2 rounded-lg shadow-card">
-              <span className="text-primary-foreground font-bold text-xl">AT</span>
-            </div>
+          <Link to="/" className="flex items-center space-x-3 hover:scale-105 transition-smooth">
+            <img 
+              src={alstemLogo} 
+              alt="ALSTEMO Technologies Logo" 
+              className="h-10 w-10 object-contain"
+            />
             <div className="flex flex-col">
               <span className="font-bold text-foreground text-lg leading-tight">ALSTEMO</span>
               <span className="text-muted-foreground text-xs leading-tight">TECHNOLOGIES</span>

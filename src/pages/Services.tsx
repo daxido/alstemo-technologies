@@ -16,6 +16,7 @@ import {
   Zap
 } from 'lucide-react';
 import Navigation from '@/components/Navigation';
+import InteractiveBackground from '@/components/InteractiveBackground';
 import servicesBanner from '@/assets/services-banner.jpg';
 
 const Services = () => {
@@ -72,6 +73,7 @@ const Services = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <InteractiveBackground />
       <Navigation />
       
       {/* Hero Section */}

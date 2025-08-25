@@ -1,6 +1,7 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Navigation from '@/components/Navigation';
+import InteractiveBackground from '@/components/InteractiveBackground';
 import aboutTeam from '@/assets/about-team.jpg';
 
 const About = () => {
@@ -25,6 +26,7 @@ const About = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <InteractiveBackground />
       <Navigation />
       
       {/* Hero Section */}

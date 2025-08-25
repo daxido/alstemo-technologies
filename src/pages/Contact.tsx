@@ -15,6 +15,7 @@ import {
   CheckCircle
 } from 'lucide-react';
 import Navigation from '@/components/Navigation';
+import InteractiveBackground from '@/components/InteractiveBackground';
 import { useToast } from '@/hooks/use-toast';
 
 const Contact = () => {
@@ -85,6 +86,7 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <InteractiveBackground />
       <Navigation />
       
       {/* Hero Section */}

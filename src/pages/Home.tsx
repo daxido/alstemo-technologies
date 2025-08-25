@@ -15,6 +15,7 @@ import {
   MapPin
 } from 'lucide-react';
 import Navigation from '@/components/Navigation';
+import InteractiveBackground from '@/components/InteractiveBackground';
 import heroBanner from '@/assets/hero-banner.jpg';
 
 const Home = () => {
@@ -29,10 +30,11 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <InteractiveBackground />
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative bg-hero-gradient text-primary-foreground overflow-hidden">
+      <section className="relative animated-gradient text-primary-foreground overflow-hidden">
         <div className="absolute inset-0 bg-black/20"></div>
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
@@ -52,12 +54,12 @@ const Home = () => {
               We make technology accessible and affordable for everyone.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" variant="secondary" className="bg-background hover:bg-background/90 text-primary shadow-hero">
+              <Button size="lg" variant="secondary" className="bg-background hover:bg-background/90 text-primary shadow-hero animate-bounce-subtle">
                 <Link to="/services" className="flex items-center gap-2">
                   Our Services <ArrowRight className="w-4 h-4" />
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" className="border-background/30 text-primary-foreground hover:bg-background/10">
+              <Button size="lg" variant="outline" className="border-background/30 text-primary-foreground hover:bg-background/10 animate-fade-in">
                 <Link to="/contact" className="flex items-center gap-2">
                   <Phone className="w-4 h-4" /> Get Quote
                 </Link>
