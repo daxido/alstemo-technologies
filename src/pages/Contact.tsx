@@ -222,12 +222,14 @@ const Contact = () => {
                       className="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
                     >
                       <option value="">Select a service</option>
-                      <option value="pc_diagnostics">PC Diagnostics</option>
-                      <option value="computer_repair">Computer Repair</option>
-                      <option value="it_support">IT Support</option>
-                      <option value="software_installation">Software Installation</option>
-                      <option value="networking">Networking</option>
-                      <option value="device_refurbishment">Device Refurbishment</option>
+                      <option value="web_development">Web Development</option>
+                      <option value="mobile_app_development">Mobile App Development</option>
+                      <option value="ui_ux_design">UI/UX Design</option>
+                      <option value="digital_marketing">Digital Marketing</option>
+                      <option value="seo_optimization">SEO Optimization</option>
+                      <option value="e_commerce_solutions">E-Commerce Solutions</option>
+                      <option value="maintenance_support">Maintenance & Support</option>
+                      <option value="consulting">Consulting</option>
                       <option value="other">Other</option>
                     </select>
                   </div>
